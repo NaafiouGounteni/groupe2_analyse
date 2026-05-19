@@ -30,7 +30,7 @@ def charger_donnees():
     
     # Appel API Banque Mondiale
     #df_brut = wbdata.get_dataframe(indicators, country=countries, date=(datetime(2000, 1, 1), datetime(2024, 1, 1)))
-    df_brut = wbdata.get_dataframe(indicators, date=(datetime(2000, 1, 1), datetime(annee_actuelle, 1, 1)))
+    df_brut = wbdata.get_dataframe(indicators, date=(datetime(2000, 1, 1), datetime(2025, 1, 1)))
     df_clean = df_brut.reset_index()
     df_clean['date'] = df_clean['date'].astype(int)
     df_clean.rename(columns={'country': 'Pays', 'date': 'Annee'}, inplace=True)
