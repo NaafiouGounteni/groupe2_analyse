@@ -10,8 +10,8 @@ st.set_page_config(page_title="Dashboard Santé BM - ESGIS", layout="wide")
 st.title("📊 Dashboard Dynamique : Analyse Comparée de la Santé en Afrique")
 st.write("Projet d'Analyse et Visualisation de Données — Données issues de la Banque Mondiale")
 
-# 2. Récupération et cache des données pour éviter de recharger l'API à chaque clic
-@st.cache_data
+# 2. Utilisation de @st.cache_resource pour éviter l'erreur de sérialisation dbm.sqlite3
+@st.cache_resource
 def charger_donnees():
     countries = ["BEN", "BFA", "CMR", "CIV", "GHA", "KEN", "NGA", "SEN", "TGO"]
     indicators = {
@@ -29,8 +29,7 @@ def charger_donnees():
     annee_actuelle = datetime.now().year
     
     # Appel API Banque Mondiale
-    #df_brut = wbdata.get_dataframe(indicators, country=countries, date=(datetime(2000, 1, 1), datetime(2024, 1, 1)))
-    df_brut = wbdata.get_dataframe(indicators, date=(datetime(2000, 1, 1), datetime(2025, 1, 1)))
+    df_brut = wbdata.get_dataframe(indicators, country=countries, date=(datetime(2000, 1, 1), datetime(annee_actuelle, 1, 1)))
     df_clean = df_brut.reset_index()
     df_clean['date'] = df_clean['date'].astype(int)
     df_clean.rename(columns={'country': 'Pays', 'date': 'Annee'}, inplace=True)
