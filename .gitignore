@@ -1,0 +1,16 @@
+# Environnement virtuel Python (très lourd, ne doit jamais être sur GitHub)
+env_m1/
+
+# Fichiers de notes personnels
+note.txt
+
+# Fichiers temporaires et caches Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Fichiers de configuration d'éditeurs (VS Code / Jupyter)
+.vscode/
+.ipynb_checkpoints/
