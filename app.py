@@ -2,7 +2,9 @@ import streamlit as st
 import wbdata
 import plotly.express as px
 from datetime import datetime
+import logging
 
+logging.getLogger("wbdata").setLevel(logging.ERROR)
 # Configuration de la page Streamlit
 st.set_page_config(page_title="Dashboard Santé BM - ESGIS", layout="wide")
 
